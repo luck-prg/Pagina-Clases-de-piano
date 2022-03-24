@@ -1,0 +1,454 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+:root{
+	--padding-container: 100px 0;
+	--color-title: #001a49;
+}
+
+
+body{
+	font-family: 'Poppins', sans-serif;
+	/*color: white;*/
+}
+
+.hero{
+	position: relative;
+	display: grid;
+	grid-template-rows: 100px 1fr; /* 1 fr equivale a lo que queda de espacio, osea lo que no utiliza la primer columna de 100px*/
+	width: 100%;
+	height: 100vh; /* 100% del area de visualizacion de la pantalla*/
+	min-height: 600px; /* esto es lo minimoque se podria ver, si la pantalla es inferior a 600px cambia o no se*/
+	/*max-width: 800px;
+*/
+	color: white;
+}
+
+.hero::before{
+	content: "";
+	position: absolute; /*se posiciona de forma absoluta sobre la clase hero,------estudiar mas sobre absolute-------*/
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-image: linear-gradient(180deg, #0000008c 0%,#0000008c 100%),url("../img/imagen_portada.png");
+	/* Linear gradient sirve para ponerle una degradado a la imagen, bajarle el brillo, ---------estudiar mas eso----------*/
+	background-size: cover;
+	clip-path: polygon(0 0,100% 0,100% 80%,50% 95%,0 80%);
+	/* Clip-path recorta la imagen segun una figura geometrica. --------Estudiar mas esto----------*/
+	/* aclaro esta informacion del vido: ; 
+		Se pone todo esto en un beforo porque si lo pongo directamente en el hero, los hijos de hero que sean FIXED tendrian problemas
+		a la hora de fijar, y fijarian la imagen.
+	*/
+	z-index: -1; /* a toda esta caja le da un valor de posicion menor que las demas*/
+}
+
+.container{
+	width: 90%;
+	max-width: 1200px;
+	margin: 0 auto;
+	overflow: hidden;
+	/*background-color: #aaa;*/
+	padding: var(--padding-container);
+}
+
+/* NAV */
+
+.nav{
+	--padding-container: 0;
+	height: 100%;
+	display: flex;
+	align-items: center;
+}
+
+.nav__title{
+	font-weight: 300;
+}
+
+.nav__items{
+	list-style: none; /*Le saca los puntos que tienen al lado de las listas*/
+}
+
+.nav__links{
+	text-decoration: none;
+	color: white;
+}
+
+.nav__link{
+	margin-left: auto;
+	padding: 0;
+	display: grid;
+	grid-auto-flow: column;
+	grid-auto-columns: max-content ;
+	gap: 2em;
+}
+
+.nav__menu{
+	margin-left: auto;
+	cursor: pointer;
+	display: none;
+}
+
+.nav__button{
+	display: block;
+	width: 30px;
+}
+
+.nav__close{
+	display: none;
+	cursor: pointer;
+}
+
+/*--------------HERO CONTAINER----------------*/
+
+.hero__container{
+	display: grid;
+	max-width: 800px;
+	--padding-container: 0;
+	grid-auto-rows: max-content;
+	/*Cada fila se ajusta al contenido de la columna*/
+	align-content: center;
+	/*Pone los elementos centrados sobre el eje y*/
+	gap: 1em;
+	padding-bottom: 100px;
+	text-align: center;
+	/*Centra el texto sobre el eje x*/
+}
+
+.hero__tittle{
+	font-size: 3rem;
+}
+
+.hero__paragraph{
+	margin-bottom: 20px;
+}
+
+.cta{
+	display: inline-block;
+	background-color: #2091f9;
+	justify-self: center;
+	color: #fff;
+	text-decoration: none;
+	padding: 13px 30px;
+	border-radius: 30px;
+}
+
+.cta:hover{
+	background-color: #0070d7;
+}
+
+.hero__icons{
+	color: white;
+	display: flex;
+	align-items: center;
+	text-align: center;
+	justify-content: center;
+}
+
+.hero__icons a{
+	color: white;
+	text-decoration: none;
+}
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>MAIN<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+/*----------------ABOUT--------------------*/
+
+.about{
+	text-align: center; /*Se centra horizontalmente*/
+}
+
+.subtitle{
+	color: var(--color-title);
+	font-size: 2rem; /*ESTUDIAR Q ES REM */
+	margin-bottom: 25PX;
+}
+
+.about__main{
+	display: grid;
+	width: 90%;
+	margin: 0 auto;
+	gap: 1em;
+	overflow: hidden;
+	padding-top: 80px;
+	grid-template-columns: repeat(auto-fit,minmax(260px, auto));
+}
+
+.about__paragraph{
+	line-height: 1.7; /*Es el espacio entre renglones*/
+}
+
+.about__icons{
+	display: grid;
+	gap: 1em;
+	justify-items: center;
+	width: 260px;
+	overflow: hidden;
+	margin: 0 auto;
+}
+
+
+.about__icon{
+	color: darkred;
+}
+
+/*----------------knowledge--------------*/
+
+.knowledge{
+	background-color: #e5e5f7;
+	opacity: 1;
+	background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #e5e5f7 10px ), repeating-linear-gradient( #e5842a55, #e5842a );
+}
+
+.knowledge__container{
+	display: grid;
+	grid-template-columns: 1fr 1fr; /*Pone en 1 fraccion todo el contenido de cada caja
+	La parte de texto ocupa lo minimo que puede ocupar y esa es su fraccion*/
+	gap: 1em;
+	align-items: center;
+}
+
+.knowledge__picture{
+	max-width: 500px;
+}
+
+.knowledge__Text{
+	text-align: left;
+}
+
+.knowledge__img{
+	width: 100%;
+}
+
+.knowledge__paragraph{
+	line-height: 1.7;
+	margin-bottom: 25px;
+}
+
+
+/*------------------PRICE--------------------*/
+
+.price{
+	text-align: center;
+}
+
+.price__table{
+	padding-top: 60px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-evenly; /*En casos como el de flex, que ocupa
+	todo el width de el padre
+	Para poner los elemenos en el centro se usa justify-content con el atributo
+	space-evenly o center*/
+	gap: 2.7em;
+
+}
+
+.price__element{
+	background-color: #EB8442 ;
+	text-align: center;
+	border-radius: 40px;
+	width: 330px;
+	padding: 40px;
+	border: 5px #5DADE2 solid;
+	opacity: 0.5;
+	transition: 0.5s;
+}
+
+.price__element:hover{
+	opacity: 1;
+}
+
+.plan__price{
+	font-size: 3rem;
+	color: var(--color-title);
+	margin: 15px 0;
+}
+
+.price__name{
+	font-weight: 300;
+}
+
+.plan__items{
+	font-weight: 300;
+	display: grid;
+	gap: 1em;
+	padding-bottom: 1em;
+	font-size: 1.2rem;
+	color: white;
+}
+
+.plan__cta{
+	background-color: #5DADE2;
+	color: white;
+	display: block;
+	padding: 20px;
+	border-radius: 10px;
+	text-decoration: none;
+	font-weight: 600;
+	box-shadow: 0 0 1px rgba(0, 0, 0, .5);
+}
+
+
+/* Seccion de opiniones */
+
+.testimony{
+	background-color: #e5e5f7;
+}
+
+.testimony__container{
+	display: grid;
+	grid-template-columns: 50px 1fr 50px;
+	gap: 1em;
+	align-items: center;
+	overflow: hidden;
+
+}
+
+.testimony__body{
+	display: grid;
+	grid-template-columns: 1fr max-content;
+	justify-content: space-between;
+	align-items: center;
+	gap: 2em;
+	grid-column: 2/3;
+	grid-row: 1/1;
+	opacity: 0;
+	pointer-events: none; 
+	/*Eso quiere decir que no se pueden seleccionar*/
+}
+
+.testimony__body--show{
+	opacity: 1;
+	pointer-events: unset; /*QUE PINGA ES ESTO?*/
+	transition: opacity 1.5s ease-in-out;
+}
+
+.testimony__course{
+	background-color: royalblue;
+	color: #fff;
+	display: inline-block;
+	padding: 5px;
+}
+
+/*.testimony__picture{
+	max-width: 250px;
+}*/
+
+.testimony__img{
+	width: 250px;
+	height: 250px;
+	border-radius: 50%;
+	object-fit: cover;
+	/*object-position: 70% 50%;*/
+
+}
+
+.testimony__texts{
+	max-width: 700px;
+}
+
+.bx{
+	width: 90%;
+	cursor: pointer;
+}
+
+
+/*-------------------------QUESTIONS---------------------------*/
+
+.questions{
+	text-align: center;
+}
+
+.questions__container{
+	display: grid;
+	gap: 2em;
+	padding-top: 50px;
+	padding-bottom: 100px;
+}
+
+.questions__padding{
+	padding: 0;
+/*	transition: padding -2s;*/
+	border: 3px solid #5454D4;
+	border-radius: 6px;
+}
+
+.questions__padding--add{
+	padding-bottom: 30px;
+}
+
+.questions__answer{
+	padding: 0 30px 0;
+	overflow: hidden;
+	
+}
+
+.questions__title{
+	display: flex;
+	cursor: pointer;
+	font-size: 20px;
+	color: #001a49;
+	display: flex;
+	padding: 20px 0;
+	justify-content: space-between;
+}
+
+.questions__show{
+	text-align: left;
+	height: 0;
+}
+
+.questions__arrow{
+	margin-left: 10px ;
+	/*transition: transform .3s;*/
+}
+
+.questions__arrow--rotate{
+	transform: rotate(180deg);
+}
+
+.arrow{
+	display: block;
+}
+
+/*---------footer-------------*/
+
+.footer{
+	background-color: #1D293F;
+	color: #fff;
+}
+
+.footer__container{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-bottom: 1px solid #fff;
+	padding-bottom: 60px;
+}
+
+.footer__title{
+	font-weight: 300;
+	font-size: 2rem;
+	margin-bottom: 30px;
+	
+}
+
+.nav--footer{
+	padding-bottom: 20px;
+	display: grid;
+	gap: 1em;
+}
+
+.footer__social{
+	display: flex;
+	gap: 2em;
+	padding-bottom: 10px;
+}
+
+.footer__icons{
+	color: white;
+
+}
+
+.footer__copy{
+	text-align: center;
+	justify-content: center;
+}
